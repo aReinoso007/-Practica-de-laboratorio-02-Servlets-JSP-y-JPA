@@ -114,12 +114,15 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Telefono> buscarCedula(String cedula) {
-		Usuario user = new Usuario();
-		UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
+		System.out.println("Cedula a buscar: "+ cedula);
+		//Usuario user = new Usuario();
+		//UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
 		//List<Telefono> telfList = new ArrayList<Telefono>();
 		Query nativeQuery = em.createNativeQuery("SELECT id, numero, operadora, tipo, usuario_id  FROM telefono WHERE telefono.usuario_id=?", Telefono.class);
 		nativeQuery.setParameter(1, cedula);
+		
 		System.out.println("Consulta exitosa");
+		
 		
 		return (List<Telefono>)nativeQuery.getResultList();
 	}

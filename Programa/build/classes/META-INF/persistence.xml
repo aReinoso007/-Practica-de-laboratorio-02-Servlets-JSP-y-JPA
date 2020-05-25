@@ -5,7 +5,7 @@
 		<class>ec.edu.ups.entidad.Usuario</class>
 		<class>ec.edu.ups.entidad.Telefono</class>
 		<properties>
-			<property name="eclipselink.ddl-generation" value="none"/>
+			<property name="eclipselink.ddl-generation" value="drop-and-create"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/agenda2"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="cuenca"/>

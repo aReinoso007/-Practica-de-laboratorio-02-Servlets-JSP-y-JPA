@@ -2,6 +2,10 @@ package ec.edu.ups.entidad;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 /**
  * Entity implementation class for Entity: Telefono
@@ -13,10 +17,9 @@ public class Telefono implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	//esta es la id del telefono a crear
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	//esto funciona como la id del usuario
 	private String numero;
 	private String tipo;
 	private String operadora;
@@ -28,17 +31,15 @@ public class Telefono implements Serializable {
 	
 	}
 
-	public Telefono(int id, String numero, String tipo, String operadora) {
+	public Telefono(String numero, String tipo, String operadora) {
 		super();
-		this.id = id;
 		this.numero = numero;
 		this.tipo = tipo;
 		this.operadora = operadora;
 	}
 
-	public Telefono(int id, String numero, String tipo, String operadora, Usuario usuario) {
+	public Telefono(String numero, String tipo, String operadora, Usuario usuario) {
 		super();
-		this.id = id;
 		this.numero = numero;
 		this.tipo = tipo;
 		this.operadora = operadora;
