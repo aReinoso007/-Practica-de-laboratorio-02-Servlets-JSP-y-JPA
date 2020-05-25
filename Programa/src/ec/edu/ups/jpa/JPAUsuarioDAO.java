@@ -13,8 +13,10 @@ public class JPAUsuarioDAO extends JPAGenericDAO<Usuario, String> implements Usu
 	
 	public JPAUsuarioDAO() {
 		super(Usuario.class);
-		// TODO Auto-generated constructor stub
+		
 	}
-
+	
+	
+	
 	
 }

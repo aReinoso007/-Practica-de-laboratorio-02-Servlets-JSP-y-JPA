@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
+import javax.persistence.Query;
+
 import ec.edu.ups.dao.GenericDAO;
 import ec.edu.ups.entidad.Usuario;
 
@@ -97,7 +99,12 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 
 	@Override
 	public Usuario buscar(String email, String pwd) {
-		return null;
+		
+		Query nativeQuery = em.createNativeQuery("SELECT * FROM Usuario where correo =? AND pwd=?", Usuario.class);
+		nativeQuery.setParameter(1, email);
+		nativeQuery.setParameter(2, pwd);
+		
+		return (Usuario) nativeQuery.getSingleResult();
 	}
 
 	@Override
