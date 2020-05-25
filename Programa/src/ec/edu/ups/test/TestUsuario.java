@@ -11,11 +11,11 @@ public class TestUsuario {
 		
 		UsuarioDAO user = DAOFactory.getFactory().getUsuarioDAO();
 		
-		Usuario u3 = new Usuario("1400919220", "Alex", "Gonzalez", "agonza@gmail.com", "123");
+		//Usuario u3 = new Usuario("1400919220", "Alex", "Gonzalez", "agonza@gmail.com", "123");
 		//Usuario u2 = new Usuario("1400919312", "Jess", "Reino", "jess@gmail.com", "123");
 		
 		//user.create(u1);
-		user.create(u3);
+		//user.create(u3);
 		//System.out.println("Usuario Creado");
 		
 	
