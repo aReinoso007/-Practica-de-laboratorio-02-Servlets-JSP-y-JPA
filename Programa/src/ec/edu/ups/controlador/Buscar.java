@@ -6,6 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.TelefonoDAO;
+import ec.edu.ups.dao.UsuarioDAO;
+import ec.edu.ups.entidad.Usuario;
 
 /**
  * Servlet implementation class Buscar
@@ -35,7 +41,20 @@ public class Buscar extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		TelefonoDAO telefonoDAO = DAOFactory.getFactory().getTelefonoDAO();
+		HttpSession sesion = request.getSession();
+		Usuario usuario = new Usuario();
+		UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
+		
+		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
+		
+		if(Integer.parseInt("id")==1) {
+			if(request.getParameter("correo") != null) {
+				System.out.println("Correo: "+request.getParameter("correo"));
+				
+				request.setAttribute("telefono", telefonoDAO.buscarCorreo(request.getParameter("correo")));
+			}
+		}
 	}
 
 }

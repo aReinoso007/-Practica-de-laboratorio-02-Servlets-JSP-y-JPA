@@ -41,18 +41,7 @@ public class LogOut extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		TelefonoDAO telefonoDAO = DAOFactory.getFactory().getTelefonoDAO();
-		HttpSession sesion = request.getSession();
-		Usuario usuario = new Usuario();
-		UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
 		
-		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
-		
-		if(Integer.parseInt("id")==1) {
-			if(request.getParameter("correo") != null) {
-				System.out.println("Correo: "+request.getParameter("correo"));
-			}
-		}
 	}
 
 }

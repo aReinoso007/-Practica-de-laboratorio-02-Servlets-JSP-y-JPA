@@ -1,5 +1,6 @@
 package ec.edu.ups.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,7 +8,10 @@ import javax.persistence.Persistence;
 
 import javax.persistence.Query;
 
+import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.GenericDAO;
+import ec.edu.ups.dao.UsuarioDAO;
+import ec.edu.ups.entidad.Telefono;
 import ec.edu.ups.entidad.Usuario;
 
 public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
@@ -57,7 +61,7 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 		}
 		
 	}
-
+	//No olvidar poner entity en managed
 	@Override
 	public void delete(T entity) {
 		em.getTransaction().begin();
@@ -107,8 +111,21 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 		return (Usuario) nativeQuery.getSingleResult();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public String cedula(String cdi) {
+	public List<Telefono> buscarCedula(String cedula) {
+		Usuario user = new Usuario();
+		UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
+		//List<Telefono> telfList = new ArrayList<Telefono>();
+		Query nativeQuery = em.createNativeQuery("SELECT id, numero, operadora, tipo, usuario_id  FROM telefono WHERE telefono.usuario_id=?", Telefono.class);
+		nativeQuery.setParameter(1, cedula);
+		System.out.println("Consulta exitosa");
+		
+		return (List<Telefono>)nativeQuery.getResultList();
+	}
+
+	@Override
+	public List<Usuario> buscarCorreo(String correo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
