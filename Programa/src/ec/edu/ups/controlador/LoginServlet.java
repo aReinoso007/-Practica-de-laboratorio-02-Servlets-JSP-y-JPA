@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.TelefonoDAO;
 import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.entidad.Usuario;
 
@@ -50,6 +51,19 @@ public class LoginServlet extends HttpServlet {
 			user = usuarioDAO.buscar(correo, contrasena);
 			System.out.println("retorno de usuario: "+ usuarioDAO.buscar(correo, contrasena));
 			url="/JSPs/IndexUsuario.jsp";
+			try {
+				if(user != null) {
+					TelefonoDAO telfDAO = DAOFactory.getFactory().getTelefonoDAO();
+					
+					request.setAttribute("telefono", telfDAO.buscarCedula(user.getId()));
+					request.setAttribute("usuario", user);
+					getServletContext().getRequestDispatcher(url).forward(request, response);
+				}
+			}catch(Exception e) {
+				System.out.println(">>>Error:LoginServlet:DOPOST "+e.getMessage());
+			}
+		}else {
+			getServletContext().getRequestDispatcher("/JSPs/Login.jsp").forward(request, response);
 		}
 
 		

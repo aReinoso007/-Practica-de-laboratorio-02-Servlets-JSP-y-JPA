@@ -18,8 +18,9 @@ public class TestUsuario {
 		//user.create(u3);
 		//System.out.println("Usuario Creado");
 		
-	
-		System.out.println(user.read("1400919302"));
+		//Comprobar que funciona funcion login
+		System.out.println(user.buscar("ralexjessiel@gmail.com", "123"));
+		
 		
 	}
 
