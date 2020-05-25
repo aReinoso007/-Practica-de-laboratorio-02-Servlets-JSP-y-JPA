@@ -10,6 +10,7 @@ public interface TelefonoDAO  extends GenericDAO<Telefono, String> {
 
 	//List<Contacto> buscarCorreo(String correo);
 	List<Telefono> buscarCedula(String cedula);
+	public List<Telefono> buscarCedInv(String cedula);
 	//List<Contacto> obtenerContacto();
 
 	//List<Contacto> buscarCedInv(String cedula);

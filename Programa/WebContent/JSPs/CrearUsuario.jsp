@@ -6,14 +6,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Registrar Usuario</title>
-<link rel="stylesheet"  href="/Practica-1/CONFIG/Style/style.css" type="text/css">
+<link rel="stylesheet"  href="/PracticaJPADAOWEB2/CONFIG/Style/style.css" type="text/css">
 </head>
 <body>
-	<form action="/Practica-1/CrearUsuario" method="POST">
+	<form action="/PracticaJPADAOWEB2/CrearUsuario" method="POST">
 	<div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
-			<div><a href="/Practica-1/JSPs/Inicio.jsp" style="font-size:x-large">Agenda</a><span></span></div>
+			<div><a href="/PracticaJPADAOWEB2/JSPs/Inicio.jsp" style="font-size:x-large">Agenda</a><span></span></div>
 		</div>
 		<br>
 		<div class="login">

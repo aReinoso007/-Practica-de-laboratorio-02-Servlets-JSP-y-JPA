@@ -47,12 +47,23 @@ public class Buscar extends HttpServlet {
 		UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
 		
 		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
-		
+		String url="";
 		if(Integer.parseInt("id")==1) {
 			if(request.getParameter("correo") != null) {
 				System.out.println("Correo: "+request.getParameter("correo"));
 				
 				request.setAttribute("telefono", telefonoDAO.buscarCorreo(request.getParameter("correo")));
+				getServletContext().getRequestDispatcher("/JSPs/Busquedas.jsp").forward(request, response);
+			}
+		}else {
+			
+		}
+		
+		if(Integer.parseInt(request.getParameter("id"))==2) {
+			if (request.getParameter("cedula") != null) {
+				System.out.print("Cedula: " + request.getParameter("cedula"));
+				request.setAttribute("telefono", telefonoDAO.buscarCedula(request.getParameter("cedula")));
+				getServletContext().getRequestDispatcher("/JSPs/Busquedas.jsp").forward(request, response);
 			}
 		}
 	}

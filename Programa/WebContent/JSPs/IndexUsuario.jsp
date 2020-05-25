@@ -7,7 +7,7 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bienvenido</title>
-<link rel="stylesheet"  href="/Practica-1/CONFIG/Style/styleLoggedOn.css" type="text/css">
+<link rel="stylesheet"  href="/PracticaJPADAOWEB2/CONFIG/Style/styleLoggedOn.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
@@ -23,7 +23,7 @@
   		<h1>Bienvenido</h1>
   		<h1> ${ p2.nombre } ${p2.apellido }</h1>
   			<ul>
-  				<li><a href="/Practica-1/controladorSesiones?id=2&idU=${p2.cedula }"></a>
+  				<li><a href="/PracticaJPADAOWEB2/controladorSesiones?id=2&idU=${p2.cedula }"></a>
   			</ul>
 		</div>
 		<br>
@@ -50,10 +50,10 @@
 		<br>
 	</div>
 	<div class="topnav">
-		<a href="/Practica-1/JSPs/Inicio.jsp">Home</a>
-		<a href="/Practica-1/JSPs/Busquedas.jsp">Busqueda</a>
-		<a href="/Practica-1/controladorSesiones?id=1&c=${p2.cedula }">Agregar Numero</a>
-		<a href="/Practica-1/LogOut" style="float:right">Sing out</a>
+		<a href="/PracticaJPADAOWEB2/JSPs/Inicio.jsp">Home</a>
+		<a href="/PracticaJPADAOWEB2/JSPs/Busquedas.jsp">Busqueda</a>
+		<a href="/PracticaJPADAOWEB2/controladorSesiones?id=1&c=${p2.cedula }">Agregar Numero</a>
+		<a href="/PracticaJPADAOWEB2/LogOut" style="float:right">Sing out</a>
 	</div>
 	
 	
@@ -75,7 +75,7 @@
 							src="https://img.icons8.com/ultraviolet/40/000000/phone.png" /></a></td>
 				<td>${telf.tipo}</td>
 				<td>${telf.operadora}</td>
-				<td><a href="/Practica-1/EliminarNumero?id=${telf.telf_id}&idUser=${p2.cedula}">Eliminar</a></td>
+				<td><a href="/PracticaJPADAOWEB2/EliminarNumero?id=${telf.telf_id}&idUser=${p2.cedula}">Eliminar</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>

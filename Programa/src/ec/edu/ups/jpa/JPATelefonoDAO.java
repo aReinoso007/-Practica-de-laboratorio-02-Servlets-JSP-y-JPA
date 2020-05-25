@@ -2,6 +2,8 @@ package ec.edu.ups.jpa;
 
 import java.util.List;
 
+import javax.persistence.Persistence;
+
 import ec.edu.ups.dao.TelefonoDAO;
 import ec.edu.ups.entidad.Telefono;
 
@@ -9,13 +11,10 @@ public class JPATelefonoDAO extends JPAGenericDAO<Telefono, String> implements T
 
 	public JPATelefonoDAO() {
 		super(Telefono.class);	
+		this.em = Persistence.createEntityManagerFactory("jpa2").createEntityManager();
 	}
 
-	@Override
-	public List<Telefono> buscarCedula(String cedula) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 	
 }

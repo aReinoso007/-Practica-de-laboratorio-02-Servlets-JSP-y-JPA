@@ -13,7 +13,7 @@ public class TestTelefono {
 		TelefonoDAO telf = DAOFactory.getFactory().getTelefonoDAO();
 		UsuarioDAO user = DAOFactory.getFactory().getUsuarioDAO();
 		
-		user.find();
+		/*user.find();
 		Usuario u1 = new Usuario();
 		u1 = user.read("1400919302");
 		System.out.println(u1);
@@ -21,8 +21,8 @@ public class TestTelefono {
 		
 		telf.create(t1);
 		System.out.println("Telef creado");
-		
-		//System.out.println(telf.buscarCedula("1400919302"));
+		*/
+		System.out.println(telf.buscarCedula("1400919302"));
 
 	}
 

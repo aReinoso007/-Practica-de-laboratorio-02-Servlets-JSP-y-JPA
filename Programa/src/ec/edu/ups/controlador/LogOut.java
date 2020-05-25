@@ -16,7 +16,7 @@ import ec.edu.ups.entidad.Usuario;
 /**
  * Servlet implementation class LogOut
  */
-@WebServlet("/LogOut")
+@WebServlet(name="LogOut", urlPatterns = {"/LogOut"})
 public class LogOut extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

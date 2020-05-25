@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>En hora buena</title>
-<link rel="stylesheet"  href="/Practica-1/CONFIG/Style/styleIndex.css" type="text/css">
+<link rel="stylesheet"  href="/PracticaJPADAOWEB2/CONFIG/Style/styleIndex.css" type="text/css">
 </head>
 <body>
 <div class="body">
@@ -15,7 +15,7 @@
 			<div>Felicidades<span></span></div><br>
 	</div>
 	<div class="login">
-				<h1><a href="/Practica-1/JSPs/Login.jsp">Log In</a></h1>
+				<h1><a href="/PracticaJPADAOWEB2/JSPs/Login.jsp">Log In</a></h1>
 		</div>
 
 </body>
