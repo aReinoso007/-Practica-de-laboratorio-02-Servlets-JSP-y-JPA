@@ -62,7 +62,7 @@ public class Buscar extends HttpServlet {
 		if(Integer.parseInt(request.getParameter("id"))==2) {
 			if (request.getParameter("cedula") != null) {
 				System.out.print("Cedula: " + request.getParameter("cedula"));
-				request.setAttribute("telefono", telefonoDAO.buscarCedula(request.getParameter("cedula")));
+				request.setAttribute("telefono", telefonoDAO.buscarCedInv(request.getParameter("cedula")));
 				getServletContext().getRequestDispatcher("/JSPs/Busquedas.jsp").forward(request, response);
 			}
 		}

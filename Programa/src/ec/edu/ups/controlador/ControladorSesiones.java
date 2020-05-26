@@ -45,9 +45,10 @@ public class ControladorSesiones extends HttpServlet {
 		if(Integer.parseInt(request.getParameter("id"))==1) {
 			
 			usuario = usuarioDao.read(request.getParameter("c"));
+			System.out.println("Cedula usar: "+request.getParameter("c"));
 			
 			request.setAttribute("idc", request.getParameter("c"));
-			request.setAttribute("usuarios", usuarioDao.find());
+			request.setAttribute("usuarios", usuario);
 			
 			getServletContext().getRequestDispatcher("/JSPs/Agregar.jsp").forward(request, response);
 		}else if(Integer.parseInt(request.getParameter("id"))==2) {

@@ -34,7 +34,8 @@ public class TestUsuario {
 		System.out.println("Telef creado");
 		*/
 		//System.out.println(telf.buscarCedula("1400919302"));
-		System.out.println(telf.buscarCorreo("ralexjessiel@gmail.com"));
+		//System.out.println(telf.find());
+		System.out.println(user.buscar("ralexjessiel@gmail.com", "123"));
 		
 		
 	}

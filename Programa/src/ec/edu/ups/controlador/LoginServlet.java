@@ -42,23 +42,31 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		
+		HttpSession sesion = request.getSession(true);
+		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
+		response.setContentType("text/html:charset=UTF-8");
+		System.out.print("Iniciar Sesion \n");
 		
 		UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
 		String correo ="";
 		String contrasena = "";
 		String url = null;
+		int i=0;
 		
 		String accion  = request.getParameter("resp");
 		Usuario user = new Usuario();
-		HttpSession sesion = request.getSession(true);
+		
 		
 		if(accion.equals("Login")) {
 			correo = request.getParameter("user");
 			contrasena = request.getParameter("password");
 			user = usuarioDAO.buscar(correo, contrasena);
+		}
 			System.out.println("retorno de usuario: "+ usuarioDAO.buscar(correo, contrasena));
 			url="/JSPs/IndexUsuario.jsp";
 			try {
@@ -68,13 +76,13 @@ public class LoginServlet extends HttpServlet {
 					request.setAttribute("telefono", telfDAO.buscarCedula(user.getId()));
 					request.setAttribute("usuario", user);
 					getServletContext().getRequestDispatcher(url).forward(request, response);
+				}else {
+					getServletContext().getRequestDispatcher("/JSPs/Login.jsp").forward(request, response);
 				}
 			}catch(Exception e) {
 				System.out.println(">>>Error:LoginServlet:DOPOST "+e.getMessage());
 			}
-		}else {
-			getServletContext().getRequestDispatcher("/JSPs/Login.jsp").forward(request, response);
-		}
+		
 
 	}
 
