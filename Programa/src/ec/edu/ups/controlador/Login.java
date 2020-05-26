@@ -28,12 +28,15 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession sesion = request.getSession(true);
+HttpSession sesion = request.getSession(true);
+
 		
+		// out.println("<h1>Gracias por acceder al servidor</h1>");
 		sesion.setAttribute("accesos", sesion.getId());
-		System.out.println("Sesion inicio: "+ sesion.getId());
 		
-		getServletContext().getRequestDispatcher("/JSPs/Login.jsp").forward(request, response);
+		System.out.print("Sesion Inicio: "+sesion.getId());
+		System.out.print("...........JPA PROJECT........................");
+		getServletContext().getRequestDispatcher("/JSPs/inicio.jsp").forward(request, response);
 	}
 
 	/**

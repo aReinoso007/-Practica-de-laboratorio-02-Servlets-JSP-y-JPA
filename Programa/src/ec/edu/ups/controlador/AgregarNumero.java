@@ -44,6 +44,7 @@ public class AgregarNumero extends HttpServlet {
 		String numero="";
 		String operadora="";
 		String tipo="";
+		String cedula="";
 
 		HttpSession sesion = request.getSession();
 		
@@ -65,12 +66,14 @@ public class AgregarNumero extends HttpServlet {
 			
 			operadora = request.getParameter("operadora");
 			tipo = request.getParameter("tipo");
-			user = usuDAO.read(request.getParameter("ced"));
-			System.out.println("datos recolectados "+numero +", "+operadora+", "+tipo+ user);
+			cedula = request.getParameter("ced");
+			System.out.println("datos recolectados "+numero +", "+operadora+", "+tipo+","+ cedula);
 			
+			user=usuDAO.read(cedula);
+			System.out.print(user +" "+tipo);
 			
 			System.out.println("Cedula: " + request.getParameter("ced"));
-			telefono = new Telefono(numero, tipo, operadora, user);
+			telefono = new Telefono(numero, tipo, operadora);
 			
 			telfDAO.create(telefono);
 			
