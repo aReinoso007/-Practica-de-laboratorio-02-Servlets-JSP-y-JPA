@@ -1,6 +1,8 @@
 package ec.edu.ups.controlador;
 
 import java.io.IOException;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,15 +46,8 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		HttpSession sesion = request.getSession();
-		
-		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
-		
-		
-
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
-		System.out.print("Iniciar Sesion \n");
 
 		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
 		String correo = "";
@@ -62,37 +57,31 @@ public class LoginServlet extends HttpServlet {
 
 		String accion = request.getParameter("resp");
 		Usuario user = new Usuario();
+		//HttpSession sesion = request.getSession(true);
 
-		// out.println("<h1>Gracias por acceder al servidor</h1>");
-
+		//sesion.setAttribute("accesos", sesion.getId());
+		//System.out.println("ID sesion: " + String.valueOf(sesion.getId()));
 		if (accion.equals("Login")) {
 			correo = request.getParameter("user");
 			contrasena = request.getParameter("password");
 			user = usuarioDao.buscar(correo, contrasena);
-		//	System.out.print(user.getApellido()+user.getCorreo());
+			System.out.println("retorno de usuario: "+ usuarioDao.buscar(correo, contrasena));
+			url="/JSPs/IndexUsuario.jsp";
+			try {
+				if (user != null) {
+					TelefonoDAO telfDAO = DAOFactory.getFactory().getTelefonoDAO();
+
+					request.setAttribute("telefono", telfDAO.buscarCedula(user.getCedula()));
+					request.setAttribute("usuario", user);
+					
+					getServletContext().getRequestDispatcher(url).forward(request, response);
+				} 
+			} catch (Exception e) {
+				System.out.println("Error en el login: " + e.getMessage());
+			}
+		}else {
+			getServletContext().getRequestDispatcher("/JSPs/Login.jsp").forward(request, response);
 		}
-
-		try {
-			if (user != null) {
-				TelefonoDAO telefonoDao = DAOFactory.getFactory().getTelefonoDAO();
-				// System.out.println(telefonoDao.find().telf_id +','+ str.id_user
-				// +','+str.numero+','+str.tipo+','+str.operadora);
-				
-				  
-				  request.setAttribute("telefono", telefonoDao.buscarCedula(user.getCedula()));
-				  request.setAttribute("usuario", user);
-				 
-				getServletContext().getRequestDispatcher("/JSPs/indexUsuario.jsp").forward(request, response);
-			
-			} else {
-				// url="/Public/login.jsp";
-				getServletContext().getRequestDispatcher("/JSPs/login.jsp").forward(request, response);
-			}
-
-			}catch (Exception e) {
-				// TODO: handle exception
-			}
-		
 		
 	}
 

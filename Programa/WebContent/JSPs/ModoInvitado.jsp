@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<form action="/Practica2/src/ec/ups/edu/controlador/controladorSesiones?id=3" method="GET">
+<form action="/Practica2/controladorSesiones?id=3" method="GET">
 <c:set var="t1" value="${requestScope['telefonos']}"/>
 
 	

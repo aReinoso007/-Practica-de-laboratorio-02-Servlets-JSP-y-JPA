@@ -39,9 +39,9 @@ public class CrearUsuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
 		//id es la cedula del usuario
-		String id="";
+		String cedula="";
 		String nombre="";
 		String apellido="";
 		String correo="";
@@ -55,17 +55,18 @@ public class CrearUsuario extends HttpServlet {
 		if(resp.equals("Registrarse")) {
 			nombre = request.getParameter("nombre");
 			apellido = request.getParameter("apellido");
-			id = request.getParameter("cdi");
+			cedula = request.getParameter("cdi");
 			correo = request.getParameter("email");
 			pwd = request.getParameter("password");
 			
-			user = new Usuario(id, nombre, apellido, correo, pwd);
+			user = new Usuario(cedula, nombre, apellido, correo, pwd);
 			
 			System.out.println("Usuario a ser creado: " +user);
 			users.create(user);
+			getServletContext().getRequestDispatcher("/JSPs/ExitoCreacion.jsp").forward(request, response);
 		}
 		
-		getServletContext().getRequestDispatcher("/JSPs/ExitoCreacion.jsp").forward(request, response);
+		//getServletContext().getRequestDispatcher("/JSPs/ExitoCreacion.jsp").forward(request, response);
 	}
 
 }

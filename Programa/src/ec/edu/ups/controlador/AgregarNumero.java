@@ -51,7 +51,7 @@ public class AgregarNumero extends HttpServlet {
 		System.out.print("ID sesion: "+ String.valueOf(sesion.getId()));
 		System.out.print("ID sesionRetornada: "+String.valueOf(sesion.getAttribute("accesos")));
 		
-		//System.out.println("ingresados" +request.getParameter("numero"));
+		System.out.println("ingresados" +request.getParameter("numero"));
 		
 		Telefono telefono = new Telefono();
 		Usuario user = new Usuario();
@@ -62,7 +62,7 @@ public class AgregarNumero extends HttpServlet {
 		
 		if(resp.equals("ingresar")) {
 			numero = request.getParameter("numero");
-			//System.out.println("numero "+numero);
+			System.out.println("numero "+numero);
 			
 			operadora = request.getParameter("operadora");
 			tipo = request.getParameter("tipo");
@@ -73,7 +73,8 @@ public class AgregarNumero extends HttpServlet {
 			System.out.print(user +" "+tipo);
 			
 			System.out.println("Cedula: " + request.getParameter("ced"));
-			telefono = new Telefono(numero, tipo, operadora);
+			
+			telefono = new Telefono(numero, tipo, operadora, user);
 			
 			telfDAO.create(telefono);
 			

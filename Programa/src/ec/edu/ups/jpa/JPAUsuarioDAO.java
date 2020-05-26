@@ -3,6 +3,8 @@ package ec.edu.ups.jpa;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Persistence;
+
 import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.entidad.*;
 
@@ -12,6 +14,7 @@ public class JPAUsuarioDAO extends JPAGenericDAO<Usuario, String> implements Usu
 	public JPAUsuarioDAO() {
 		super(Usuario.class);
 		// TODO Auto-generated constructor stub
+		this.em = Persistence.createEntityManagerFactory("jpa2").createEntityManager();
 	}
 
 

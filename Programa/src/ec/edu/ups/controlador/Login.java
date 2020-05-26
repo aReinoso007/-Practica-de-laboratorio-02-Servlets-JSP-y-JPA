@@ -14,35 +14,37 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-HttpSession sesion = request.getSession(true);
-
-		
-		// out.println("<h1>Gracias por acceder al servidor</h1>");
-		sesion.setAttribute("accesos", sesion.getId());
-		
-		System.out.print("Sesion Inicio: "+sesion.getId());
-		System.out.print("...........JPA PROJECT........................");
-		getServletContext().getRequestDispatcher("/JSPs/inicio.jsp").forward(request, response);
+	public Login() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+
+		//HttpSession sesion = request.getSession(true);
+
+		//sesion.setAttribute("accesos", sesion.getId());
+		//System.out.println("Sesion inicio: " + sesion.getId());
+
+		getServletContext().getRequestDispatcher("/Practica2/JSPs/Login.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
