@@ -14,7 +14,7 @@ public class JPAUsuarioDAO extends JPAGenericDAO<Usuario, String> implements Usu
 	public JPAUsuarioDAO() {
 		super(Usuario.class);
 		// TODO Auto-generated constructor stub
-		this.em = Persistence.createEntityManagerFactory("jpa2").createEntityManager();
+		this.em = Persistence.createEntityManagerFactory("Practica2").createEntityManager();
 	}
 
 

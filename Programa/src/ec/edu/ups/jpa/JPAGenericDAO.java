@@ -21,7 +21,7 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 
 	public JPAGenericDAO(Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
-		this.em = Persistence.createEntityManagerFactory("jpa2").createEntityManager();
+		this.em = Persistence.createEntityManagerFactory("Practica2").createEntityManager();
 	}
 
 	@Override
