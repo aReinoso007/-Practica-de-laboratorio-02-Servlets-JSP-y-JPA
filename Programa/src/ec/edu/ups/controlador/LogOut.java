@@ -8,11 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import ec.edu.ups.dao.DAOFactory;
-import ec.edu.ups.dao.TelefonoDAO;
-import ec.edu.ups.dao.UsuarioDAO;
-import ec.edu.ups.entidad.Usuario;
-
 /**
  * Servlet implementation class LogOut
  */
@@ -34,6 +29,12 @@ public class LogOut extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		HttpSession sesion = request.getSession();
+		
+		sesion.invalidate();
+		
+		getServletContext().getRequestDispatcher("/Login").forward(request, response);
 	}
 
 	/**
@@ -41,7 +42,7 @@ public class LogOut extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		doGet(request, response);
 	}
 
 }

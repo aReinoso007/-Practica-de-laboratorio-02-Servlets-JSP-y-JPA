@@ -12,17 +12,18 @@ public class TestTelefono {
 		
 		TelefonoDAO telf = DAOFactory.getFactory().getTelefonoDAO();
 		UsuarioDAO user = DAOFactory.getFactory().getUsuarioDAO();
-		
+		/*
 		user.find();
 		Usuario u1 = new Usuario();
-		u1 = user.read("1400919302");
+		u1 = user.read("1500287716");
 		System.out.println(u1);
-		Telefono t1 = new Telefono("0998952718", "CNT", "Celular", u1);
+		Telefono t1 = new Telefono("0983316186", "CNT", "Celular", u1);
 		
 		telf.create(t1);
 		System.out.println("Telef creado");
-		
-		System.out.println(telf.buscarCedula("1400919302"));
+		*/
+		//System.out.println(telf.buscarCedula("1500287716"));
+		System.out.println(telf.findAll());
 
 	}
 

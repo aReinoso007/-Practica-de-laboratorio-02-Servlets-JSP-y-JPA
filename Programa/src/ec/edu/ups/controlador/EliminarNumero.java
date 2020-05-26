@@ -13,6 +13,7 @@ import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.entidad.Telefono;
 import ec.edu.ups.entidad.Usuario;
 
+
 /**
  * Servlet implementation class EliminarNumero
  */
@@ -33,7 +34,7 @@ public class EliminarNumero extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		UsuarioDAO usuDAO = DAOFactory.getFactory().getUsuarioDAO();
 		TelefonoDAO telDAO = DAOFactory.getFactory().getTelefonoDAO();
@@ -71,6 +72,7 @@ public class EliminarNumero extends HttpServlet {
 			System.out.println("Error al eliminar " + e.getMessage());
 		}
 		//getServletContext().getRequestDispatcher("/JSPs/IndexUsuario.jsp").forward(request, response);
+		
 	}
 
 	/**

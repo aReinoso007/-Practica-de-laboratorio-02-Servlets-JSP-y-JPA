@@ -11,6 +11,8 @@ import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.entidad.Usuario;
 
+
+
 /**
  * Servlet implementation class CrearUsuario
  */
@@ -39,19 +41,18 @@ public class CrearUsuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		//id es la cedula del usuario
-		String cedula="";
-		String nombre="";
-		String apellido="";
-		String correo="";
-		String pwd = "";
+		doGet(request, response);
+		
+		String nombre ="";
+		String apellido ="";
+		String cedula ="";
+		String correo ="";
+		String pwd="";
 		
 		Usuario user = new Usuario();
 		
 		String resp = request.getParameter("resp");
-		UsuarioDAO users = DAOFactory.getFactory().getUsuarioDAO();
-		
+		UsuarioDAO usuDAO = DAOFactory.getFactory().getUsuarioDAO();
 		if(resp.equals("Registrarse")) {
 			nombre = request.getParameter("nombre");
 			apellido = request.getParameter("apellido");
@@ -61,12 +62,9 @@ public class CrearUsuario extends HttpServlet {
 			
 			user = new Usuario(cedula, nombre, apellido, correo, pwd);
 			
-			System.out.println("Usuario a ser creado: " +user);
-			users.create(user);
+			usuDAO.create(user);
 			getServletContext().getRequestDispatcher("/JSPs/ExitoCreacion.jsp").forward(request, response);
 		}
-		
-		//getServletContext().getRequestDispatcher("/JSPs/ExitoCreacion.jsp").forward(request, response);
 	}
 
 }

@@ -6,15 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import ec.edu.ups.dao.DAOFactory;
-import ec.edu.ups.dao.TelefonoDAO;
-import ec.edu.ups.dao.UsuarioDAO;
-import ec.edu.ups.entidad.Usuario;
-
+import ec.edu.ups.jpa.*;
+import ec.edu.ups.dao.*;
 /**
- * Servlet implementation class Buscar
+ * Servlet implementation class BuscarPorCedula
  */
 @WebServlet("/Buscar")
 public class Buscar extends HttpServlet {
@@ -26,6 +22,8 @@ public class Buscar extends HttpServlet {
     public Buscar() {
         super();
         // TODO Auto-generated constructor stub
+        
+        
     }
 
 	/**
@@ -41,31 +39,37 @@ public class Buscar extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		TelefonoDAO telefonoDAO = DAOFactory.getFactory().getTelefonoDAO();
-		HttpSession sesion = request.getSession();
-		Usuario usuario = new Usuario();
-		UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
-		
-		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
-		String url="";
-		if(Integer.parseInt("id")==1) {
-			if(request.getParameter("correo") != null) {
-				System.out.println("Correo: "+request.getParameter("correo"));
-				
-				request.setAttribute("telefono", telefonoDAO.buscarCorreo(request.getParameter("correo")));
+		doGet(request, response);
+		TelefonoDAO telefonoDao = DAOFactory.getFactory().getTelefonoDAO();
+
+		// out.println("<h1>Gracias por acceder al servidor</h1>");
+		// sesion.setAttribute("accesos", 1);
+		System.out.println("Buscando");
+		if (Integer.parseInt(request.getParameter("id")) == 1) {
+			// Correo
+			if (request.getParameter("correo") != null) {
+				System.out.print("Correo: " + request.getParameter("correo"));
+
+				request.setAttribute("telefono", telefonoDao.buscarCorreo(request.getParameter("correo")));
 				getServletContext().getRequestDispatcher("/JSPs/Busquedas.jsp").forward(request, response);
+
 			}
-		}else {
-			
+
+		} else {
+
 		}
-		
-		if(Integer.parseInt(request.getParameter("id"))==2) {
+
+		if (Integer.parseInt(request.getParameter("id")) == 2) {
+			// Cedula
 			if (request.getParameter("cedula") != null) {
 				System.out.print("Cedula: " + request.getParameter("cedula"));
-				request.setAttribute("telefono", telefonoDAO.buscarCedInv(request.getParameter("cedula")));
+				request.setAttribute("telefono", telefonoDao.buscarCedInv(request.getParameter("cedula")));
 				getServletContext().getRequestDispatcher("/JSPs/Busquedas.jsp").forward(request, response);
 			}
+		} else {
+
 		}
+		
 	}
 
 }

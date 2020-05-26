@@ -15,8 +15,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class Filtro
  */
-@WebFilter(urlPatterns = { "/Filtro" }, servletNames = { "Buscar", "controladorSesiones", "LoginServlet",
-"AgregarNumero" })
+@WebFilter(urlPatterns = { "/Filtro" }, servletNames = { "Buscar", "controladorSesiones", "LoginServlet", "AgregarNumero" })
 public class Filtro implements Filter {
 
 	/**

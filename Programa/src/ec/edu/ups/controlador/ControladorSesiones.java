@@ -13,17 +13,19 @@ import ec.edu.ups.dao.TelefonoDAO;
 import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.entidad.Usuario;
 
+
+
 /**
- * Servlet implementation class ControladorSesiones
+ * Servlet implementation class controladorSesiones
  */
 @WebServlet( name = "controladorSesiones", urlPatterns= {"/controladorSesiones"})
-public class ControladorSesiones extends HttpServlet {
+public class controladorSesiones extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ControladorSesiones() {
+    public controladorSesiones() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,9 +34,9 @@ public class ControladorSesiones extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-
+		
 		HttpSession sesion = request.getSession();
 		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
 		
@@ -49,7 +51,7 @@ public class ControladorSesiones extends HttpServlet {
 			usuario = usuarioDao.read(request.getParameter("c"));
 			
 			request.setAttribute("idc", request.getParameter("c"));
-			request.setAttribute("usuarios", usuarioDao.findAll());
+			request.setAttribute("usuarios", usuarioDao.find());
 			
 			getServletContext().getRequestDispatcher("/JSPs/Agregar.jsp").forward(request, response);
 		}else if(Integer.parseInt(request.getParameter("id"))==2) {
@@ -68,12 +70,11 @@ public class ControladorSesiones extends HttpServlet {
 			System.out.println("Ingresando...");
 			
 			//probar para luego obtener todos los contactos con .obtenerContacto();
-			request.setAttribute("telefonos", telfDAO.findAll());
+			request.setAttribute("telefonos", telfDAO.find());
 			
 			
 			getServletContext().getRequestDispatcher("/JSPs/ModoInvitado.jsp").forward(request, response);
 		}
-		
 	}
 
 	/**
