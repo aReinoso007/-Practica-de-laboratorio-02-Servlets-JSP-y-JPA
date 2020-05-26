@@ -40,59 +40,47 @@ public class AgregarNumero extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		
 		String numero="";
+		String tipo = "";
 		String operadora="";
-		String tipo="";
-		String cedula="";
-
+		
 		HttpSession sesion = request.getSession();
 		
-		System.out.print("ID sesion: "+ String.valueOf(sesion.getId()));
-		System.out.print("ID sesionRetornada: "+String.valueOf(sesion.getAttribute("accesos")));
+		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
 		
-		//System.out.println("ingresados" +request.getParameter("numero"));
 		
-		Telefono telefono = new Telefono();
+		
+		Telefono telf = new Telefono();
 		Usuario user = new Usuario();
-		String resp = request.getParameter("agregar");
+		String accion = request.getParameter("agregar");
+		TelefonoDAO telefonoDao = DAOFactory.getFactory().getTelefonoDAO();
+		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
 		
-		TelefonoDAO telfDAO = DAOFactory.getFactory().getTelefonoDAO();
-		UsuarioDAO usuDAO = DAOFactory.getFactory().getUsuarioDAO();
-		
-		if(resp.equals("ingresar")) {
+		if (accion.equals("ingresar")) {
+			
+			//user = request.getParameter("usr");
 			numero = request.getParameter("numero");
-			//System.out.println("numero "+numero);
-			
-			operadora = request.getParameter("operadora");
 			tipo = request.getParameter("tipo");
-			cedula = request.getParameter("ced");
-			System.out.println("datos recolectados "+numero +", "+operadora+", "+tipo+","+ cedula);
+			operadora = request.getParameter("operadora");
+			user=usuarioDao.read(request.getParameter("ced"));
+			System.out.println("datos recolectados "+numero +", "+operadora+", "+tipo+","+ user);
 			
-			user=usuDAO.read(cedula)
-					;
-			System.out.print(user +" "+tipo);
+			System.out.print("CEDULA:   "+request.getParameter("ced"));
+			telf = new Telefono( numero, tipo, operadora, user);
 			
-			System.out.println("Cedula: " + request.getParameter("ced"));
-			telefono = new Telefono(numero, tipo, operadora, user);
+			telefonoDao.create(telf);
 			
-			telfDAO.create(telefono);
-			
-			System.out.println("Agregando");
+			try {
+				request.setAttribute("usuario", user);
+				request.setAttribute("telefono", telefonoDao.buscarCedula( request.getParameter("ced")));				
+				getServletContext().getRequestDispatcher("/JSPs/IndexUsuario.jsp").forward(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 			
 		}
-		try {
-			
-			request.setAttribute("usuario", user);
-			request.setAttribute("telefono", telfDAO.buscarCedula(request.getParameter("ced")));
-			
-			System.out.println("ingresando telefono");
-			
-			getServletContext().getRequestDispatcher("/JSPs/IndexUsuario.jsp").forward(request, response);
-		}catch(Exception e) {
-			System.out.println("Error en agregar "+e.getMessage());
-		}
+		
 		
 	}
 

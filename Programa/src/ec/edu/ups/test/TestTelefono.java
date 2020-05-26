@@ -23,7 +23,7 @@ public class TestTelefono {
 		System.out.println("Telef creado");
 		*/
 		//System.out.println(telf.buscarCedula("1500287716"));
-		System.out.println(telf.findAll());
+		System.out.println(telf.read(String.valueOf(1)));
 
 	}
 

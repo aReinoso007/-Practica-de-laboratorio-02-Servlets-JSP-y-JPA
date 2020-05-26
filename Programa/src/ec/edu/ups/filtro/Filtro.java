@@ -35,10 +35,11 @@ public class Filtro implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		
 		long inicio = System.currentTimeMillis();
 		// chain.doFilter(request, response);
+		System.out.println("FILTRANDO SESIONES......");
 		System.out.print("INFO: Tiempo de Proceso(  " + (System.currentTimeMillis() - inicio) + "  ms)");
 
 		HttpServletRequest req = (HttpServletRequest) request;

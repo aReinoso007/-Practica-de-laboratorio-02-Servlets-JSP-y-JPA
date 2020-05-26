@@ -2,9 +2,9 @@ package ec.edu.ups.controlador;
 
 import java.io.IOException;
 
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
+//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	public LoginServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -51,41 +51,50 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
+HttpSession sesion = request.getSession();
+		
+		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
+		
+		
+
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
+		System.out.print("Iniciar Sesion \n");
 
 		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
 		String correo = "";
 		String contrasena = "";
-		String url = null;
-		int i = 0;
+		//String url = null;
+		//int i = 0;
 
 		String accion = request.getParameter("resp");
 		Usuario user = new Usuario();
-		HttpSession sesion = request.getSession(true);
 
-		sesion.setAttribute("accesos", sesion.getId());
-		System.out.println("ID sesion: " + String.valueOf(sesion.getId()));
+
+
 		if (accion.equals("Login")) {
 			correo = request.getParameter("user");
 			contrasena = request.getParameter("password");
 			user = usuarioDao.buscar(correo, contrasena);
-			System.out.println("retorno de usuario: "+ user);
-			url="/JSPs/IndexUsuario.jsp";
-			try {
-				if (user != null) {
-					TelefonoDAO telfDAO = DAOFactory.getFactory().getTelefonoDAO();
 
-					request.setAttribute("telefono", telfDAO.buscarCedula(user.getCedula()));
-					request.setAttribute("usuario", user);
-					
-					getServletContext().getRequestDispatcher(url).forward(request, response);
-				} 
-			} catch (Exception e) {
-				System.out.println("Error en el login: " + e.getMessage());
+		}
+		try {
+			if (user != null) {
+				TelefonoDAO telefonoDao = DAOFactory.getFactory().getTelefonoDAO();
+	
+				  
+				  request.setAttribute("telefono", telefonoDao.buscarCedula(user.getCedula()));
+				  request.setAttribute("usuario", user);
+				 
+				getServletContext().getRequestDispatcher("/JSPs/IndexUsuario.jsp").forward(request, response);
+			
+			} else {
+
+				getServletContext().getRequestDispatcher("/JSps/login.jsp").forward(request, response);
 			}
-		}else {
-			getServletContext().getRequestDispatcher("/JSPs/Login.jsp").forward(request, response);
+
+		}catch (Exception e) {
+			System.out.println(">>>ERROR:IniciarSesion:DOPOST "+e.getMessage());
 		}
 		
 

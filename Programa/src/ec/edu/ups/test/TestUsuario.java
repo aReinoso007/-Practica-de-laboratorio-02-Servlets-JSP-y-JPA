@@ -22,10 +22,10 @@ public class TestUsuario {
 		//Comprobar que funciona funcion login
 		//System.out.println(user.buscar("ralexjessiel@gmail.com", "123"));
 		
-		//TelefonoDAO telf = DAOFactory.getFactory().getTelefonoDAO();
+		TelefonoDAO telf = DAOFactory.getFactory().getTelefonoDAO();
 		
 		//System.out.println(user.findAll());
-		System.out.println(user.read("1500297725"));
+		//System.out.println(user.read("1500297725"));
 		//Usuario u1 = new Usuario();
 		//u1 = user.read("1400919302");
 		//System.out.println(u1);
@@ -37,6 +37,7 @@ public class TestUsuario {
 		//System.out.println(telf.buscarCedula("1400919302"));
 		//System.out.println(telf.findAll());
 		//System.out.println(user.read("1400919302"));
+		System.out.println(telf.buscarCorreo("ralexjessiel@gmail.com"));
 		
 		
 	}

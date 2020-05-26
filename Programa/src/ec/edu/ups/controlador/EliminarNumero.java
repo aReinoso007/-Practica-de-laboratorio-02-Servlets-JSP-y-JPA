@@ -33,45 +33,28 @@ public class EliminarNumero extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		UsuarioDAO usuDAO = DAOFactory.getFactory().getUsuarioDAO();
-		TelefonoDAO telDAO = DAOFactory.getFactory().getTelefonoDAO();
-		Telefono telefono = new Telefono();
+		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
+		TelefonoDAO telefonoDao = DAOFactory.getFactory().getTelefonoDAO();
+		Telefono telf= new Telefono();
 		Usuario usuario = new Usuario();
 		
+		String id =request.getParameter("idUser");
 		
-		String id= request.getParameter("idUser");
-		//telfID = request.getParameter("id");
+		//telf=telefonoDao.read(Integer.parseInt(request.getParameter("id")));
 		
-		System.out.println("el id del telefono: "+request.getParameter("id"));
-		
-		
-		telefono = telDAO.read(request.getParameter("id"));
-		System.out.println("Telefono recuperado "+telefono);
-		System.out.println("telefono para eliminar "+telefono);
-		System.out.println("cedula del usuario en delete:" +id);
-		
-
-		telDAO.delete(telefono);
-		
+		telefonoDao.delete(telf);
 		
 		try {
-			
-			usuario = usuDAO.read(id);
-			
+			usuario=usuarioDao.read(id);
 			request.setAttribute("usuario", usuario);
-			request.setAttribute("telefono", telDAO.buscarCedula(usuario.getCedula()));
-			//System.out.println("lista de telefonos");
-			//System.out.println(telDAO.find());
-			
+			request.setAttribute("telefono", telefonoDao.buscarCedula(id));				
 			getServletContext().getRequestDispatcher("/JSPs/IndexUsuario.jsp").forward(request, response);
 			
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("Error al eliminar " + e.getMessage());
 		}
-		//getServletContext().getRequestDispatcher("/JSPs/IndexUsuario.jsp").forward(request, response);
 		
 	}
 
