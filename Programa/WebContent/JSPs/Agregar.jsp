@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Editar</title>
-<link rel="stylesheet"  href="/PracticaJPADAOWEB2/CONFIG/Style/styleAdd.css" type="text/css">
+<link rel="stylesheet"  href="/Practica2/CONFIG/Style/styleAdd.css" type="text/css">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -21,15 +21,15 @@
 
 </div>
 <div class="topnav">
-	<a href="/PracticaJPADAOWEB2/JSPs/Inicio.jsp">Home</a> <a
-		href="/PracticaJPADAOWEB2/controladorSesiones?id=2&ced=${p1.cedula}">Mi
+	<a href="/Practica2/JSPs/Inicio.jsp">Home</a> <a
+		href="/Practica2/controladorSesiones?id=2&ced=${p1.cedula}">Mi
 		Cuenta</a> <a href=""></a> <a href="" style="float: right">Sing out</a>
 </div>
 <div class="info">
 
 </div>
 <div class="container">
-	<form action="/PracticaJPADAOWEB2/AgregarNumero?ced=${p2 }" method="POST">
+	<form action="/Practica2/AgregarNumero?ced=${p2 }" method="POST">
 
 		<h1>Agregar telefono:</h1>
 		

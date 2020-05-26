@@ -61,7 +61,7 @@ public class EliminarNumero extends HttpServlet {
 			usuario = usuDAO.read(id);
 			
 			request.setAttribute("usuario", usuario);
-			request.setAttribute("telefono", telDAO.buscarCedula(usuario.getId()));
+			request.setAttribute("telefono", telDAO.buscarCedula(usuario.getCedula()));
 			//System.out.println("lista de telefonos");
 			//System.out.println(telDAO.find());
 			

@@ -8,7 +8,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="/PracticaJPADAOWEB2/CONFIG/Style/styleLoggedOn.css"
+<link rel="stylesheet" href="/Practica-1/CONFIG/Style/styleLoggedOn.css"
 	type="text/css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,19 +20,19 @@
 	<div id="header">
 		<h1>Busquedas</h1>
 		<h1>
-			<a href="/PracticaJPADAOWEB2/controladorSesiones?id=3" id="contact-link">Contactos</a>
+			<a href="/Practica2/controladorSesiones?id=3" id="contact-link">Contactos</a>
 		</h1>
 	</div>
 	<div class="topnav">
-		<a href="/PracticaJPADAOWEB2/JSPs/Inicio.jsp">Home</a>
-		<form action="/PracticaJPADAOWEB2/Buscar?id=1" method="POST">
+		<a href="/Practica2/JSPs/Inicio.jsp">Home</a>
+		<form action="/Practica2/Buscar?id=1" method="POST">
 		<a><input type="text" class="form-control" name="correo"
 				placeholder="Buscar por correo....."></a>
 		<a><button class="input-group-text" name="buscarCorreo" value="correoB"
 					type="submit">Buscar</button></a>
 		</form>
 
-		<form action="/PracticaJPADAOWEB2/Buscar?id=2" method="POST">	
+		<form action="/Practica2/Buscar?id=2" method="POST">	
 		<a><input type="text" class="form-control" name="cedula"
 				placeholder="Buscar por cedula....."></a>		
 		<a><button class="input-group-text" name="buscarCed" value="cedulaB" type="submit">Buscar</button></a>

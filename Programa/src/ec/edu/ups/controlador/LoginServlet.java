@@ -19,69 +19,69 @@ import ec.edu.ups.entidad.Usuario;
 @WebServlet(name = "LoginServlet", urlPatterns = { "/LoginServlet" })
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		
 		
-		HttpSession sesion = request.getSession(true);
-		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
-		response.setContentType("text/html:charset=UTF-8");
-		System.out.print("Iniciar Sesion \n");
-		
-		UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
-		String correo ="";
+
+		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
+		String correo = "";
 		String contrasena = "";
 		String url = null;
-		int i=0;
-		
-		String accion  = request.getParameter("resp");
+		int i = 0;
+
+		String accion = request.getParameter("resp");
 		Usuario user = new Usuario();
-		
-		
-		if(accion.equals("Login")) {
+		HttpSession sesion = request.getSession(true);
+
+		sesion.setAttribute("accesos", sesion.getId());
+		System.out.println("ID sesion: " + String.valueOf(sesion.getId()));
+		if (accion.equals("Login")) {
 			correo = request.getParameter("user");
 			contrasena = request.getParameter("password");
-			user = usuarioDAO.buscar(correo, contrasena);
-		}
-			System.out.println("retorno de usuario: "+ usuarioDAO.buscar(correo, contrasena));
+			user = usuarioDao.buscar(correo, contrasena);
+			System.out.println("retorno de usuario: "+ usuarioDao.buscar(correo, contrasena));
 			url="/JSPs/IndexUsuario.jsp";
 			try {
-				if(user != null) {
+				if (user != null) {
 					TelefonoDAO telfDAO = DAOFactory.getFactory().getTelefonoDAO();
-					
-					request.setAttribute("telefono", telfDAO.buscarCedula(user.getId()));
+
+					request.setAttribute("telefono", telfDAO.buscarCedula(user.getCedula()));
 					request.setAttribute("usuario", user);
+					
 					getServletContext().getRequestDispatcher(url).forward(request, response);
-				}else {
-					getServletContext().getRequestDispatcher("/JSPs/Login.jsp").forward(request, response);
-				}
-			}catch(Exception e) {
-				System.out.println(">>>Error:LoginServlet:DOPOST "+e.getMessage());
+				} 
+			} catch (Exception e) {
+				System.out.println("Error en el login: " + e.getMessage());
 			}
+		}else {
+			getServletContext().getRequestDispatcher("/JSPs/Login.jsp").forward(request, response);
+		}
 		
 
 	}

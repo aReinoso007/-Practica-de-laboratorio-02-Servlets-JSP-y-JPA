@@ -12,17 +12,17 @@ public class TestUsuario {
 		
 		UsuarioDAO user = DAOFactory.getFactory().getUsuarioDAO();
 		
-		//Usuario u3 = new Usuario("1400919220", "Alex", "Gonzalez", "agonza@gmail.com", "123");
+		Usuario u3 = new Usuario("1400919302", "Alex", "Reinoso", "ralexjessiel@gmail.com", "123");
 		Usuario u2 = new Usuario("1500297716", "Sharon", "Reinoso", "sr@gmail.com", "123");
 		
-		//user.create(u2);
-		//user.create(u3);
-		//System.out.println("Usuario Creado");
+		user.create(u2);
+		user.create(u3);
+		System.out.println("Usuario Creado");
 		
 		//Comprobar que funciona funcion login
 		//System.out.println(user.buscar("ralexjessiel@gmail.com", "123"));
 		
-		TelefonoDAO telf = DAOFactory.getFactory().getTelefonoDAO();
+		//TelefonoDAO telf = DAOFactory.getFactory().getTelefonoDAO();
 		
 		/*user.find();
 		Usuario u1 = new Usuario();
@@ -35,7 +35,7 @@ public class TestUsuario {
 		*/
 		//System.out.println(telf.buscarCedula("1400919302"));
 		//System.out.println(telf.find());
-		System.out.println(user.buscar("ralexjessiel@gmail.com", "123"));
+		//System.out.println(user.read("1400919302"));
 		
 		
 	}

@@ -15,10 +15,10 @@ import javax.persistence.*;
 public class Usuario implements Serializable {
 
 	
-	private static final long serialVersionUID = 1L;
-	//nombre, cedula=id, apellido, correo, pwd
+	private static final long serialVersionUcedula = 1L;
+	//nombre, cedula=cedula, apellcedulao, correo, pwd
 	@Id
-	private String id;
+	private String cedula;
 	private String nombre;
 	private String apellido;
 	private String correo;
@@ -32,9 +32,9 @@ public class Usuario implements Serializable {
 	}
 
 	//Esta solo para crear el usuario, sin crear los telefonos
-	public Usuario(String id, String nombre, String apellido, String correo, String pwd) {
+	public Usuario(String cedula, String nombre, String apellido, String correo, String pwd) {
 		super();
-		this.id = id;
+		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
@@ -44,9 +44,9 @@ public class Usuario implements Serializable {
 
 
 	//esta para agregar los telefonos del usuario
-	public Usuario(String id, String nombre, String apellido, String correo, String pwd, List<Telefono> telefonos) {
+	public Usuario(String cedula, String nombre, String apellido, String correo, String pwd, List<Telefono> telefonos) {
 		super();
-		this.id = id;
+		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
@@ -54,12 +54,12 @@ public class Usuario implements Serializable {
 		this.telefonos = telefonos;
 	}
 
-	public String getId() {
-		return id;
+	public String getCedula() {
+		return cedula;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
 	}
 
 	public String getNombre() {
@@ -110,7 +110,7 @@ public class Usuario implements Serializable {
 		int result = 1;
 		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
 		result = prime * result + ((correo == null) ? 0 : correo.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((cedula == null) ? 0 : cedula.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((pwd == null) ? 0 : pwd.hashCode());
 		result = prime * result + ((telefonos == null) ? 0 : telefonos.hashCode());
@@ -136,10 +136,10 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!correo.equals(other.correo))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (cedula == null) {
+			if (other.cedula != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!cedula.equals(other.cedula))
 			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
@@ -161,7 +161,7 @@ public class Usuario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo + ", pwd="
+		return "Usuario [cedula=" + cedula + ", nombre=" + nombre + ", apellcedulao=" + apellido + ", correo=" + correo + ", pwd="
 				+ pwd + "]";
 	}
 	

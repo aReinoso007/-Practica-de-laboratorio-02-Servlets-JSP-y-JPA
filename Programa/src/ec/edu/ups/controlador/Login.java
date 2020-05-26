@@ -27,13 +27,13 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession sesion = request.getSession(true);
 		
 		sesion.setAttribute("accesos", sesion.getId());
 		System.out.println("Sesion inicio: "+ sesion.getId());
 		
 		getServletContext().getRequestDispatcher("/JSPs/Login.jsp").forward(request, response);
-	
 	}
 
 	/**

@@ -7,13 +7,13 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bienvenido</title>
-<link rel="stylesheet"  href="/PracticaJPADAOWEB2/CONFIG/Style/styleLoggedOn.css" type="text/css">
+<link rel="stylesheet"  href="/Practica2/CONFIG/Style/styleLoggedOn.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 
-<form action="/PracticaJPADAOWEB2/src/ec/ups/edu/controlador/controladorSesiones?id=3" method="GET">
+<form action="/Practica2/src/ec/ups/edu/controlador/controladorSesiones?id=3" method="GET">
 <c:set var="t1" value="${requestScope['telefonos']}"/>
 
 	
@@ -21,7 +21,7 @@
   		<h1>Lista de telefonos</h1>
 	</div>
 	<div class="topnav">
-		<a href="/PracticaJPADAOWEB2/JSPs/Inicio.jsp">Home</a>
+		<a href="/Practica2/JSPs/Inicio.jsp">Home</a>
 	</div>
 
 	<table class="container">

@@ -15,10 +15,13 @@ public interface GenericDAO<T, ID> {
 	public void delete(T entity);
 	public List<T> find();
 	public void deleteByID(ID id);
+	
 	Usuario buscar(String email, String pwd);
+	
 	public List<Telefono> buscarCedula(String cedula);
 	public List<Telefono> buscarCedInv(String cedula);
 	public List<Telefono> buscarCorreo(String correo); 
+	
 	List<T> findAll();
 	
 	

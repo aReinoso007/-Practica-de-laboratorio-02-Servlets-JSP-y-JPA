@@ -16,7 +16,7 @@ import ec.edu.ups.entidad.Usuario;
 /**
  * Servlet implementation class ControladorSesiones
  */
-@WebServlet( name = "controladorSesiones", urlPatterns= {"/controladorSesiones"})
+@WebServlet( name = "controladorSesiones", urlPatterns= { "/controladorSesiones" })
 public class ControladorSesiones extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,23 +32,25 @@ public class ControladorSesiones extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
+		
+		
+response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		HttpSession sesion = request.getSession();
 		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
+		
 		System.out.println("Id de sesion del controlador "+ sesion.getAttribute("accesos"));
 		TelefonoDAO telfDAO = DAOFactory.getFactory().getTelefonoDAO();
 		Usuario usuario = new Usuario();
 		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
 		
+		
 		if(Integer.parseInt(request.getParameter("id"))==1) {
 			
 			usuario = usuarioDao.read(request.getParameter("c"));
-			System.out.println("Cedula usar: "+request.getParameter("c"));
 			
 			request.setAttribute("idc", request.getParameter("c"));
-			request.setAttribute("usuarios", usuario);
+			request.setAttribute("usuarios", usuarioDao.find());
 			
 			getServletContext().getRequestDispatcher("/JSPs/Agregar.jsp").forward(request, response);
 		}else if(Integer.parseInt(request.getParameter("id"))==2) {
@@ -57,7 +59,7 @@ public class ControladorSesiones extends HttpServlet {
 			usuario = usuarioDao.read(request.getParameter("idU"));
 			
 			
-			request.setAttribute("telefono", telfDAO.buscarCedula(usuario.getId()));
+			request.setAttribute("telefono", telfDAO.buscarCedula(usuario.getCedula()));
 			request.setAttribute("usuario", usuario);
 			
 			getServletContext().getRequestDispatcher("/JSPs/IndexUsuario.jsp").forward(request, response);
